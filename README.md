@@ -62,42 +62,42 @@ through `script/extract-numbery-strings.go` and then using `sed` to split what
 would be a 189 MiB file into multiple (million line) files:
 
 ```diff
-    diff --git a/torture_test.go b/torture_test.go
-    index 87ba7e7..59887ff 100644
-    --- a/torture_test.go
-    +++ b/torture_test.go
-    @@ -1,8 +1,11 @@
-     package fptest
+diff --git a/torture_test.go b/torture_test.go
+index 87ba7e7..59887ff 100644
+--- a/torture_test.go
++++ b/torture_test.go
+@@ -1,8 +1,11 @@
+ package fptest
 
-     import (
-    +       "bufio"
-            "bytes"
-    +       "fmt"
-            "math"
-    +       "os"
-            "strconv"
-            "testing"
+ import (
++       "bufio"
+        "bytes"
++       "fmt"
+        "math"
++       "os"
+        "strconv"
+        "testing"
 
-    @@ -124,6 +127,11 @@ func TestTortureShortest32(t *testing.T) {
-     }
+@@ -124,6 +127,11 @@ func TestTortureShortest32(t *testing.T) {
+ }
 
-     func TestTortureAtof64(t *testing.T) {
-    +       tmpFile, _ := os.Create("/tmp/TestTortureAtof64.txt")
-    +       defer tmpFile.Close()
-    +       tmpWriter := bufio.NewWriter(tmpFile)
-    +       defer tmpWriter.Flush()
-    +
-            count := 0
-            buf := make([]byte, 64)
-            roundUp := false
-    @@ -140,6 +148,7 @@ func TestTortureAtof64(t *testing.T) {
-                            t.Errorf("could not parse %q: %s", s, err)
-                            return
-                    }
-    +               fmt.Fprintf(tmpWriter, "%s\n", s)
-                    expect := x
-                    if roundUp {
-                            expect = y
+ func TestTortureAtof64(t *testing.T) {
++       tmpFile, _ := os.Create("/tmp/TestTortureAtof64.txt")
++       defer tmpFile.Close()
++       tmpWriter := bufio.NewWriter(tmpFile)
++       defer tmpWriter.Flush()
++
+        count := 0
+        buf := make([]byte, 64)
+        roundUp := false
+@@ -140,6 +148,7 @@ func TestTortureAtof64(t *testing.T) {
+                        t.Errorf("could not parse %q: %s", s, err)
+                        return
+                }
++               fmt.Fprintf(tmpWriter, "%s\n", s)
+                expect := x
+                if roundUp {
+                        expect = y
 ```
 
 
