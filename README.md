@@ -48,6 +48,8 @@ In the `data` directory:
   [lemire/fast\_double\_parser](https://github.com/lemire/fast_double_parser)
 - `lemire-fast-float.txt` was extracted from
   [lemire/fast\_float](https://github.com/lemire/fast_float)
+- `more-test-cases.txt` was extracted from this repository's manually curated
+  collection of [more test cases](./more-test-cases)
 - `tencent-rapidjson.txt` was extracted from
   [Tencent/rapidjson](https://github.com/Tencent/rapidjson)
 - `ulfjack-ryu.txt` was extracted from
