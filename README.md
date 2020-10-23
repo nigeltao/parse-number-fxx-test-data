@@ -46,6 +46,8 @@ In the `data` directory:
   [IEEE 754R test suite](https://www.research.ibm.com/haifa/projects/verification/fpgen/test_suite_download.shtml)
 - `lemire-fast-double-parser.txt` was extracted from
   [lemire/fast\_double\_parser](https://github.com/lemire/fast_double_parser)
+- `lemire-fast-float.txt` was extracted from
+  [lemire/fast\_float](https://github.com/lemire/fast_float)
 - `tencent-rapidjson.txt` was extracted from
   [Tencent/rapidjson](https://github.com/Tencent/rapidjson)
 - `ulfjack-ryu.txt` was extracted from
