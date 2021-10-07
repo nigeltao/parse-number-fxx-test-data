@@ -36,6 +36,7 @@ known as the `bfloat16` format.
 
 In the `data` directory:
 
+- `exhaustive-float16.txt` is an exhaustive list of `float16` values.
 - `freetype-2-7.txt` was extracted from [Freetype](https://www.freetype.org/)
   2.7
 - `google-double-conversion.txt` was extracted from
