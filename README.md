@@ -112,3 +112,35 @@ Programs that use this test data set:
 
 - `script/manual-test-parse-number-f64.cc` in
   [google/wuffs](https://github.com/google/wuffs)
+
+
+## Test Suite Running Time
+
+As of November 2021, `data/*.txt` contains over 5 million test cases. Parsing
+them all should take tens of seconds at most. For example, on a mid-range
+`x86_64` laptop (2016; Skylake):
+
+```
+$ grep model.name /proc/cpuinfo | uniq
+model name      : Intel(R) Core(TM) m3-6Y30 CPU @ 0.90GHz
+$ git clone --depth 1 --quiet https://github.com/google/wuffs.git
+$ gcc -O3 wuffs/script/manual-test-parse-number-f64.cc
+$ time ./a.out data/*.txt
+   31745 OK in data/exhaustive-float16.txt
+    3566 OK in data/freetype-2-7.txt
+  564745 OK in data/google-double-conversion.txt
+   10744 OK in data/google-wuffs.txt
+  102792 OK in data/ibm-fpgen.txt
+   94313 OK in data/lemire-fast-double-parser.txt
+    3299 OK in data/lemire-fast-float.txt
+      60 OK in data/more-test-cases.txt
+ 1000000 OK in data/remyoudompheng-fptest-0.txt
+ 1000000 OK in data/remyoudompheng-fptest-1.txt
+ 1000000 OK in data/remyoudompheng-fptest-2.txt
+  885708 OK in data/remyoudompheng-fptest-3.txt
+    3563 OK in data/tencent-rapidjson.txt
+  599458 OK in data/ulfjack-ryu.txt
+real    0m6.790s
+user    0m6.707s
+sys     0m0.082s
+```
