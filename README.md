@@ -112,6 +112,8 @@ Programs that use this test data set:
 
 - `script/manual-test-parse-number-f64.cc` in
   [google/wuffs](https://github.com/google/wuffs)
+- `testsuite/json/test_json_decimal_to_number.adb` in
+  [AdaCore/VSS](https://github.com/AdaCore/VSS)
 
 
 ## Test Suite Running Time
